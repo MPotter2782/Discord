@@ -1,0 +1,2 @@
+8/12/2018 - Playing with webhooks and seeing what use I can make of them
+			Added the PDF and Word doc versions of the adventures log
