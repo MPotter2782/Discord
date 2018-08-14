@@ -31,9 +31,47 @@ bot.on('message', function (user, userID, channelID, message, evt) {
        
         args = args.splice(1);
         switch(cmd) {
-			// !session
-			case 'session':
-				switch(days[d.getDay()]){
+			// !bot
+			case 'bot':
+			bot.sendMessage({
+				to: channelID,
+				message: 'This bot is designed to have some fun!  If you have any suggestions for what you want it to do, either let <@176147348307574785> know or follow ' + 
+				'this link: https://docs.google.com/spreadsheets/d/1QdH9OZ6CN3TGgbUABwMrgXSz4s6qHuG5FHU7sKDTipc/edit?usp=sharing'
+			})
+			break;
+			case 'AdventureLog':
+			bot.sendMessage({
+				to: channelID,
+				message: 'Looking the adventure log?  No problem!  Follow this link:  https://github.com/MPotter2782/Discord/tree/master/Tomb%20of%20Anihilations'
+			})
+			break;
+         }
+     }
+	 
+	 var Strahd = [
+    "You called? ;D",
+	"You're just jealous",
+	"Error: 404",
+	"I am FANTASTIC",
+	"I know you love to hate me", 
+	"Bet you thought you'd seen the last of me.... SURPRISE BITCH!",
+	"Don't hate me because I'm beautiful",
+	"What direction are we going?  East?  West?  NO.  We go... WeEEeEest!",
+	"O_o",
+	""
+	];
+	 
+	 var middle_finger = require("discord-emoji").people.middle_finger;
+	 
+	 if (message.includes('<@176147348307574785>')){
+		 bot.sendMessage({
+			 to: channelID,
+			 message: 'success'
+		 })
+	 }
+	 
+	 if(message.includes('the next session')){
+		 switch(days[d.getDay()]){
 			 case "Monday":
 				d.setDate(d.getDate() + 6)
 				bot.sendMessage({
@@ -83,30 +121,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				})
 			break;
 		 }
-		 break;
-         }
-     }
-	 
-	 var Strahd = [
-    "You called? ;D",
-	"You're just jealous",
-	"Error: 404",
-	"I am FANTASTIC",
-	"I know you love to hate me", 
-	"Bet you thought you'd seen the last of me.... SURPRISE BITCH!",
-	"Don't hate me because I'm beautiful",
-	"What direction are we going?  East?  West?  NO.  We go... WeEEeEest!",
-	"O_o",
-	""
-	];
-	 
-	 var middle_finger = require("discord-emoji").people.middle_finger;
-	 
-	 if (message.includes('test')){
-		 bot.sendMessage({
-			 to: channelID,
-			 message: 'succes'
-		 })
 	 }
 	 
 	 var i = Strahd.length - 1
@@ -115,7 +129,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	 message.includes('strahd') ||
 	 message.includes(':coolbert:') ||
 	 message.includes('fuck') ||
-	 message.includes(middle_finger)){
+	 message.includes(middle_finger) ||
+	 message.includes('@<190496591243640833>')){
 		 var x = Math.floor((Math.random() * i));
 		 
 		 bot.sendMessage({
