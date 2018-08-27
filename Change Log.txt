@@ -5,3 +5,4 @@
 8/13/2018 - Updated the adventure log
 		Created two folders, one for the bot and one for the logs
 		
+8/26/2018 - Testing command for commit
