@@ -26,21 +26,11 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Home">Active<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="InitiativeCounter.html">Initiative Counter</a>
-              <a class="dropdown-item" href="#">Current Initiative</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="CurrentInitiative.html">Current Battle Information</a>
             </div>
           </li>
         </ul>
@@ -50,15 +40,48 @@
     <main role="main" class="container">
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <div class = "container">
+			<div class = "row">
+				<div class = "col">
+					<h1>Current Battle Information</h1>
+				</div>
+			</div>
+			<div class = "row">
+				<div class = "col">
+					<p>Current battle length:  </p>
+				</div>
+				<div class = "col">
+					<p id="lengthSec"></p>
+				</div>
+				<div class = "col">
+					<p id="lengthRound"></p>
+				</div>
+			</div>
+			<div class = "row">
+				<div class = "col-11"></div>
+				<div class = "col-1">
+					<button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="trackTime()">Track</button>
+				</div>
+			</div>
+		</div>
       </div>
 	  
-	  <div class="button">
-		<form action="InitiativeCounter.html">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Next ></button>
-		</form>
-	  </div>
+<!--	  <script>
+			var sec = 0;
+			var round = 0;
+			var min = 0;
+		function trackTime(){
+			sec += 6;
+			round += 1;
+			
+			if(sec == 60){
+				min += 1;
+				sec = 0;
+			}
+			document.getElementById("lengthSec").innerHTML = min + " minutes and " + sec + " seconds";
+			document.getElementById("lengthRound").innerHTML = round + " rounds";
+		}
+	</script> -->
 
     </main><!-- /.container -->
 
@@ -69,6 +92,7 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="Starter%20Template%20for%20Bootstrap_files/popper.js"></script>
     <script src="Starter%20Template%20for%20Bootstrap_files/bootstrap.js"></script>
+	<script src="js/InitiativeTracker.js"></script>
   
 
 </body></html>

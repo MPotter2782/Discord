@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
+    <link rel="icon" href="icon.png">
 
     <title>Initiative Counter</title>
 
@@ -26,21 +26,11 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="InitiativeCounter.html">Initiative Counter</a>
+              <a class="dropdown-item" href="CurrentInitiative.html">Current Battle Information</a>
             </div>
           </li>
         </ul>
@@ -54,29 +44,132 @@
         <p class="lead">Page to use as an initiative Counter.<br> Enter in the player's initiative count and hit Next when done.</p>
       </div>
 	  
-          <input class="form-control mr-sm-2" placeholder="Character" aria-label="Character" id="Character" type="text">
-		  <input class="form-control mr-sm-2" placeholder="Initiative" aria-label="Initiative" id="Initiative" type="text">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="InitiativeTracker()">Add</button>
-	  
-	  <div class="button">
-		<form action="CurrentInitiative.html">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Next ></button>
-		</form>
+	  <div class = "container">
+		<div class = "row">
+			<div class = "col">
+				<input class="form-control mr-sm-2" placeholder="Character" aria-label="Character" id="Character" type="text">
+			</div>
+			<div class = "col">
+				<input class="form-control mr-sm-2" placeholder="Initiative" aria-label="Initiative" id="Initiative" type="text">
+			</div>
+		</div>
+		<br>
+		<div class = "row">
+			<div class = "col-11"></div>
+			<div class = "col-1"><button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="tryThis()">Add</button></div>
+		</div>
 	  </div>
 	  
-	  <p id="demo"></p>
-	  
-	  <script>
-	  function InitiativeTracker(){
-	  var initiative = ["Melinda", "Bob"];
-	  for(i = 0; i < initiative.length; i++){
-	  if(){
-		initiative[i] = "Test";
+	<div class = "fixed-bottom">
+		<div class = "container">
+			<div class = "row">
+				<div class = "col-11"></div>
+				<div class = "col-1">
+					<div class="button" id = "next">
+						<form action="CurrentInitiative.html">
+							<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Next ></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div class = "container">
+		<div class = "row">
+			<div class = "col-4"></div>
+			<div class = "col-2"><p id="demo1"></p></div>
+			<div class = "col-2"><p id="demo2"></p></div>
+			<div class = "col-4"></div>
+		</div>
+	</div>
+	
+<!--	<script>
+	function tryThis(){
+		chara.push(document.getElementById("Character").value);
+		init.push(document.getElementById("Initiative").value);
+		
+		charaText = "<ul>";
+		for (i = 0; i < chara.length; i++) {
+			charaText += "<li>" + chara[i] + "</li>";
 		}
-	  }
-	  document.getElementById("demo").innerHTML = initiative;
+		charaText += "</ul>";
+		
+		initText = "<ul>";
+		
+		for (i = 0; i < chara.length; i++) {
+			initText += "<li>" + init[i] + "</li>";
 		}
-	  </script>
+		initText += "</ul>";
+		document.getElementById("demo1").innerHTML = charaText;
+		document.getElementById("demo2").innerHTML = initText;
+	}
+	</script> -->
+	
+	<script>
+	var initTest = [
+	[],[]
+	];
+	function test(){
+		initTest.push(document.getElementById("Character").value, document.getElementById("Initiative").value);
+		
+		testText = "<ul>";
+		
+		for (i = 0; i < initTest.length; i++) {
+			testText += "<li>" + initTest[i] + "</li>";
+		}
+		testText += "</ul>";
+		
+		document.getElementById("demo1").innerHTML = initTest;
+		}
+	</script>
+	
+<script>
+// Example data given in question text
+var data = [
+  ['name1', 'city1', 'some other info'],
+  ['name2', 'city2', 'more info']
+];
+
+// Building the CSV from the Data two-dimensional array
+// Each column is separated by ";" and new line "\n" for next row
+var csvContent = '';
+data.forEach(function(infoArray, index) {
+  dataString = infoArray.join(';');
+  csvContent += index < data.length ? dataString + '\n' : dataString;
+});
+
+// The download function takes a CSV string, the filename and mimeType as parameters
+// Scroll/look down at the bottom of this snippet to see how download is called
+var download = function(content, fileName, mimeType) {
+  var a = document.createElement('a');
+  mimeType = mimeType || 'application/octet-stream';
+
+  if (navigator.msSaveBlob) { // IE10
+    navigator.msSaveBlob(new Blob([content], {
+      type: mimeType
+    }), fileName);
+  } else if (URL && 'download' in a) { //html5 A[download]
+    a.href = URL.createObjectURL(new Blob([content], {
+      type: mimeType
+    }));
+    a.setAttribute('download', fileName);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  } else {
+    location.href = 'data:application/octet-stream,' + encodeURIComponent(content); // only this mime type is supported
+  }
+}
+
+download(csvContent, 'dowload.csv', 'text/csv;encoding:utf-8');
+	}
+</script>
+	
+	<button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="test()">Test</button>
+	<button class="btn btn-outline-light my-2 my-sm-0" type="submit" onclick="test2()">Test 2</button>
+
 
     </main><!-- /.container -->
 
@@ -87,6 +180,7 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="Starter%20Template%20for%20Bootstrap_files/popper.js"></script>
     <script src="Starter%20Template%20for%20Bootstrap_files/bootstrap.js"></script>
+	<script src="js/InitiativeTracker.js"></script>
   
 
 </body></html>
